@@ -166,6 +166,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
       - name: Download Artifacts
         uses: actions/download-artifact@v4.1.7
         with:
@@ -177,7 +180,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           automatic_release_tag: latest
           prerelease: false
-          title: Latest UWP Builds
+          title: Xbox Builds [${{ step.date.outputs.date }}]
           files: | 
             ./artifacts/RetroArch-XboxOne/RetroArch-XboxOne.appx
             ./artifacts/RetroArch-SeriesConsoles/RetroArch-SeriesConsoles.appx

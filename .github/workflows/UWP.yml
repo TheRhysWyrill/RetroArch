@@ -180,7 +180,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           automatic_release_tag: latest
           prerelease: false
-          title: Xbox Builds [${{ step.date.outputs.date }}]
+          title: Xbox Builds [${{ steps.date.outputs.date }}]
           files: | 
             ./artifacts/RetroArch-XboxOne/RetroArch-XboxOne.appx
             ./artifacts/RetroArch-SeriesConsoles/RetroArch-SeriesConsoles.appx

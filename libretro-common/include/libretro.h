@@ -2556,6 +2556,19 @@ enum retro_mod
  */
 #define RETRO_ENVIRONMENT_GET_PLAYLIST_DIRECTORY 79
 
+/**
+ * Returns the "file browser" start directory of the frontend.
+ *
+ * This directory can serve as a start directory for the core in case it
+ * provides an internal way of loading content.
+ *
+ * @param[out] data <tt>const char **</tt>.
+ * May be \c NULL. If so, no such directory is defined, and it's up to the
+ * implementation to find a suitable directory.
+ * @return \c true if the environment call is available.
+ */
+#define RETRO_ENVIRONMENT_GET_FILE_BROWSER_START_DIRECTORY 80
+
 /**@}*/
 
 /**
@@ -7426,7 +7439,7 @@ typedef void (RETRO_CALLCONV *retro_audio_sample_t)(int16_t left, int16_t right)
  *     is defined as a sample of left and right channels, interleaved.
  *     For example: <tt>int16_t buf[4] = { l, r, l, r };</tt> would be 2 frames.
  *
- * @return The number of samples that were processed.
+ * @return The number of frames that were processed.
  *
  * @see retro_set_audio_sample_batch()
  * @see retro_set_audio_sample()
